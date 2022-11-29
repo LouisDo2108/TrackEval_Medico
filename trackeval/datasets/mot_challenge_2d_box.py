@@ -21,7 +21,7 @@ class MotChallenge2DBox(_BaseDataset):
             'TRACKERS_FOLDER': os.path.join(code_path, 'data/trackers/mot_challenge/'),  # Trackers location
             'OUTPUT_FOLDER': None,  # Where to save eval results (if None, same as TRACKERS_FOLDER)
             'TRACKERS_TO_EVAL': None,  # Filenames of trackers to eval (if None, all in folder)
-            'CLASSES_TO_EVAL': ['pedestrian'],  # Valid: ['pedestrian']
+            'CLASSES_TO_EVAL': ['sperm', 'small', 'cluster'],  # Valid: ['pedestrian']
             'BENCHMARK': 'MOT17',  # Valid: 'MOT17', 'MOT16', 'MOT20', 'MOT15'
             'SPLIT_TO_EVAL': 'train',  # Valid: 'train', 'test', 'all'
             'INPUT_AS_ZIP': False,  # Whether tracker input files are zipped
@@ -326,7 +326,7 @@ class MotChallenge2DBox(_BaseDataset):
         distractor_class_names = ['person_on_vehicle', 'static_person', 'distractor', 'reflection']
         if self.benchmark == 'MOT20':
             distractor_class_names.append('non_mot_vehicle')
-        distractor_classes = [self.class_name_to_class_id[x] for x in distractor_class_names]
+        # distractor_classes = [self.class_name_to_class_id[x] for x in distractor_class_names]
         cls_id = self.class_name_to_class_id[cls]
 
         data_keys = ['gt_ids', 'tracker_ids', 'gt_dets', 'tracker_dets', 'tracker_confidences', 'similarity_scores']
